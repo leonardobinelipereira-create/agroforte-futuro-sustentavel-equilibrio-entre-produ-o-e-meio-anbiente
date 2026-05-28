@@ -1,1 +1,56 @@
+.hero{
+    height:100vh;
+    background:url('fazenda.jpg') center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
+.overlay{
+    background:rgba(0,0,0,0.5);
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    color:white;
+}
+
+.btn{
+    background:#4CAF50;
+    padding:12px 25px;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+}
+.cards{
+    display:flex;
+    gap:20px;
+    padding:50px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:300px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+.stats{
+    background:#2e7d32;
+    color:white;
+    display:flex;
+    justify-content:space-around;
+    padding:60px;
+    text-align:center;
+}
+background: linear-gradient(135deg,#2e7d32,#81c784);
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+#D7CCC8

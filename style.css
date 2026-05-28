@@ -53,4 +53,6 @@ background: linear-gradient(135deg,#2e7d32,#81c784);
 background: rgba(255,255,255,0.1);
 backdrop-filter: blur(10px);
 transition: all 0.3s ease;
-#D7CCC8
+body{
+    font-family:'Poppins', sans-serif;
+}

@@ -1,54 +1,856 @@
-<section class="hero">
-    <div class="overlay">
-        <h1>Agro Futuro Sustentável</h1>
-        <p>Tecnologia e natureza trabalhando juntas.</p>
-        <a href="#sobre" class="btn">Explorar</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>AgroForte • Futuro Sustentável</title>
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================
+       RESET
+    ========================== */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f6f2eb;
+      color:#3d2b1f;
+      overflow-x:hidden;
+    }
+
+    /* =========================
+       CORES
+    ========================== */
+
+    :root{
+      --verde:#2e7d32;
+      --verde2:#43a047;
+      --verdeClaro:#a5d6a7;
+
+      --marrom:#5d4037;
+      --marrom2:#6d4c41;
+      --bege:#f6f2eb;
+
+      --branco:#ffffff;
+      --sombra:0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:20px 8%;
+
+      background:rgba(40,25,20,0.82);
+
+      backdrop-filter:blur(10px);
+
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo{
+      color:white;
+      font-size:2rem;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:30px;
+      font-weight:500;
+      transition:0.3s;
+      position:relative;
+    }
+
+    nav a::after{
+      content:"";
+      width:0%;
+      height:2px;
+      background:var(--verdeClaro);
+
+      position:absolute;
+      left:0;
+      bottom:-5px;
+
+      transition:0.3s;
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero{
+      height:100vh;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+      color:white;
+
+      padding:20px;
+    }
+
+    .hero-content{
+      max-width:950px;
+      animation:entrada 1.5s ease;
+    }
+
+    .hero h1{
+      font-size:5rem;
+      margin-bottom:25px;
+      line-height:1.1;
+      text-shadow:2px 2px 15px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 span{
+      color:var(--verdeClaro);
+    }
+
+    .hero p{
+      font-size:1.3rem;
+      line-height:2;
+      margin-bottom:40px;
+    }
+
+    .botoes{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 38px;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .btn-verde{
+      background:var(--verde);
+      color:white;
+    }
+
+    .btn-verde:hover{
+      background:#1b5e20;
+      transform:translateY(-5px);
+    }
+
+    .btn-transparente{
+      border:2px solid white;
+      color:white;
+    }
+
+    .btn-transparente:hover{
+      background:white;
+      color:var(--marrom);
+    }
+
+    /* =========================
+       SEÇÕES
+    ========================== */
+
+    section{
+      padding:110px 10%;
+    }
+
+    .titulo{
+      text-align:center;
+      font-size:3rem;
+      color:var(--marrom);
+      margin-bottom:25px;
+    }
+
+    .subtitulo{
+      text-align:center;
+      max-width:900px;
+      margin:auto;
+      line-height:2;
+      color:#5f524c;
+      font-size:1.1rem;
+    }
+
+    /* =========================
+       SOBRE
+    ========================== */
+
+    .sobre{
+      background:var(--bege);
+    }
+
+    .sobre-container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+      margin-top:60px;
+    }
+
+    .sobre img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:var(--sombra);
+    }
+
+    .sobre-texto h3{
+      color:var(--verde);
+      font-size:2rem;
+      margin-bottom:20px;
+    }
+
+    .sobre-texto p{
+      line-height:2;
+      color:#5f524c;
+      margin-bottom:20px;
+    }
+
+    /* =========================
+       TECNOLOGIAS
+    ========================== */
+
+    .tecnologias{
+
+      background:
+      linear-gradient(rgba(34,85,40,0.92), rgba(34,85,40,0.92)),
+      url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1500&q=80');
+
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+
+      color:white;
+    }
+
+    .tecnologias .titulo,
+    .tecnologias .subtitulo{
+      color:white;
+    }
+
+    .cards{
+      margin-top:60px;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.12);
+
+      border:1px solid rgba(255,255,255,0.15);
+
+      backdrop-filter:blur(8px);
+
+      padding:40px;
+      border-radius:25px;
+
+      transition:0.4s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      background:rgba(255,255,255,0.18);
+    }
+
+    .icone{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:1.5rem;
+    }
+
+    .card p{
+      line-height:1.9;
+    }
+
+    /* =========================
+       BENEFÍCIOS
+    ========================== */
+
+    .beneficios{
+      background:#efe7dc;
+    }
+
+    .beneficios-grid{
+      margin-top:60px;
+
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .beneficio{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+
+      box-shadow:var(--sombra);
+
+      transition:0.4s;
+
+      border-top:5px solid var(--verde);
+    }
+
+    .beneficio:hover{
+      transform:translateY(-8px);
+    }
+
+    .beneficio h3{
+      color:var(--marrom);
+      margin-bottom:15px;
+    }
+
+    .beneficio p{
+      line-height:1.8;
+      color:#666;
+    }
+
+    /* =========================
+       ESTATÍSTICAS
+    ========================== */
+
+    .estatisticas{
+      background:var(--marrom);
+      color:white;
+    }
+
+    .estatisticas-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:40px;
+      text-align:center;
+    }
+
+    .numero{
+      font-size:4rem;
+      color:var(--verdeClaro);
+      font-weight:700;
+      margin-bottom:10px;
+    }
+
+    /* =========================
+       MISSÃO
+    ========================== */
+
+    .missao{
+      background:var(--bege);
+    }
+
+    .missao-box{
+      margin-top:60px;
+
+      background:white;
+      padding:60px;
+
+      border-radius:30px;
+
+      box-shadow:var(--sombra);
+
+      border-left:10px solid var(--verde);
+    }
+
+    .missao-box h3{
+      font-size:2rem;
+      color:var(--marrom);
+      margin-bottom:20px;
+    }
+
+    .missao-box p{
+      line-height:2;
+      color:#666;
+    }
+
+    /* =========================
+       CONTATO
+    ========================== */
+
+    .contato{
+
+      background:
+      linear-gradient(rgba(60,35,20,0.92), rgba(60,35,20,0.92)),
+      url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1500&q=80');
+
+      background-size:cover;
+      background-position:center;
+
+      color:white;
+    }
+
+    .contato .titulo,
+    .contato .subtitulo{
+      color:white;
+    }
+
+    form{
+      max-width:800px;
+      margin:60px auto 0;
+    }
+
+    .input-group{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    input,
+    textarea{
+      width:100%;
+
+      padding:18px;
+
+      border:none;
+      border-radius:15px;
+
+      margin-bottom:20px;
+
+      font-size:1rem;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+      height:180px;
+    }
+
+    button{
+      width:100%;
+
+      padding:18px;
+
+      border:none;
+      border-radius:50px;
+
+      background:var(--verde);
+
+      color:white;
+
+      font-size:1rem;
+      font-weight:600;
+
+      cursor:pointer;
+
+      transition:0.4s;
+    }
+
+    button:hover{
+      background:#1b5e20;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      background:#2b1d17;
+      color:white;
+
+      text-align:center;
+
+      padding:30px;
+    }
+
+    /* =========================
+       ANIMAÇÃO
+    ========================== */
+
+    @keyframes entrada{
+
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================== */
+
+    @media(max-width:950px){
+
+      header{
+        flex-direction:column;
+      }
+
+      nav{
+        margin-top:15px;
+      }
+
+      nav a{
+        margin:0 10px;
+      }
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      .sobre-container{
+        grid-template-columns:1fr;
+      }
+
+      .titulo{
+        font-size:2.2rem;
+      }
+
+      .input-group{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">🌱 AgroForte</div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#tecnologias">Tecnologias</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#missao">Missão</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <h1>
+        Futuro <span>Sustentável</span><br>
+        para o Agro
+      </h1>
+
+      <p>
+        O AgroForte une tecnologia, inovação e preservação ambiental
+        para transformar a agricultura em um modelo mais eficiente,
+        inteligente e sustentável para o futuro.
+      </p>
+
+      <div class="botoes">
+
+        <a href="#sobre" class="btn btn-verde">
+          Explorar
+        </a>
+
+        <a href="#contato" class="btn btn-transparente">
+          Fale Conosco
+        </a>
+
+      </div>
+
     </div>
-</section>
-<section class="cards">
 
-    <div class="card">
-        <h2>Energia Solar</h2>
-        <p>Uso de energia limpa nas fazendas.</p>
+  </section>
+
+  <!-- SOBRE -->
+
+  <section class="sobre" id="sobre">
+
+    <h2 class="titulo">
+      Agricultura Inteligente
+    </h2>
+
+    <p class="subtitulo">
+      A sustentabilidade no campo é essencial para garantir
+      alimento, desenvolvimento econômico e preservação dos recursos naturais.
+    </p>
+
+    <div class="sobre-container">
+
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80">
+
+      <div class="sobre-texto">
+
+        <h3>Produção com Responsabilidade</h3>
+
+        <p>
+          O AgroForte acredita que tecnologia e natureza devem caminhar juntas.
+          Com práticas modernas e sustentáveis, buscamos reduzir impactos ambientais
+          e aumentar a eficiência da produção agrícola.
+        </p>
+
+        <p>
+          Utilizamos soluções inteligentes como irrigação automatizada,
+          energia renovável e monitoramento digital para preservar
+          recursos naturais e garantir um futuro mais verde.
+        </p>
+
+      </div>
+
     </div>
 
-    <div class="card">
-        <h2>Drones</h2>
-        <p>Monitoramento inteligente das plantações.</p>
+  </section>
+
+  <!-- TECNOLOGIAS -->
+
+  <section class="tecnologias" id="tecnologias">
+
+    <h2 class="titulo">
+      Tecnologias Sustentáveis
+    </h2>
+
+    <p class="subtitulo">
+      Inovação aplicada ao agronegócio para aumentar produtividade
+      sem comprometer o meio ambiente.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="icone">🌞</div>
+
+        <h3>Energia Solar</h3>
+
+        <p>
+          Uso de fontes renováveis para abastecimento sustentável
+          das operações agrícolas.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icone">🚁</div>
+
+        <h3>Drones Inteligentes</h3>
+
+        <p>
+          Monitoramento em tempo real das plantações
+          com precisão e eficiência.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="icone">💧</div>
+
+        <h3>Irrigação Inteligente</h3>
+
+        <p>
+          Controle automatizado para economia de água
+          e preservação hídrica.
+        </p>
+
+      </div>
+
     </div>
 
-    <div class="card">
-        <h2>Irrigação Inteligente</h2>
-        <p>Economia de água e maior eficiência.</p>
-      <section class="stats">
+  </section>
 
-    <div>
-      <section class="timeline">
-   <div class="evento">1950 - Agricultura Tradicional</div>
-   <div class="evento">2000 - Automação</div>
-   <div class="evento">2026 - Agro Inteligente</div>
-</section>
-        <h2>70%</h2>
-        <p>Economia de água</p>
+  <!-- BENEFÍCIOS -->
+
+  <section class="beneficios" id="beneficios">
+
+    <h2 class="titulo">
+      Benefícios Sustentáveis
+    </h2>
+
+    <p class="subtitulo">
+      Soluções modernas que trazem resultados para o produtor
+      e para o planeta.
+    </p>
+
+    <div class="beneficios-grid">
+
+      <div class="beneficio">
+
+        <h3>🌎 Preservação Ambiental</h3>
+
+        <p>
+          Proteção dos recursos naturais através de práticas agrícolas conscientes.
+        </p>
+
+      </div>
+
+      <div class="beneficio">
+
+        <h3>📈 Alta Produtividade</h3>
+
+        <p>
+          Tecnologia aplicada ao campo para melhorar resultados e reduzir desperdícios.
+        </p>
+
+      </div>
+
+      <div class="beneficio">
+
+        <h3>♻ Sustentabilidade</h3>
+
+        <p>
+          Equilíbrio entre crescimento econômico e preservação ambiental.
+        </p>
+
+      </div>
+
+      <div class="beneficio">
+
+        <h3>🌱 Inovação Verde</h3>
+
+        <p>
+          Soluções modernas para um futuro agrícola mais inteligente e eficiente.
+        </p>
+
+      </div>
+
     </div>
 
-    <div>
-        <h2>40%</h2>
-        <p>Menos emissão de carbono</p>
+  </section>
+
+  <!-- ESTATÍSTICAS -->
+
+  <section class="estatisticas">
+
+    <div class="estatisticas-container">
+
+      <div>
+        <div class="numero">70%</div>
+        <p>Economia de Água</p>
+      </div>
+
+      <div>
+        <div class="numero">45%</div>
+        <p>Menos Emissão de Carbono</p>
+      </div>
+
+      <div>
+        <div class="numero">90%</div>
+        <p>Eficiência Tecnológica</p>
+      </div>
+
+      <div>
+        <div class="numero">100%</div>
+        <p>Compromisso Sustentável</p>
+      </div>
+
     </div>
 
-</section>
+  </section>
+
+  <!-- MISSÃO -->
+
+  <section class="missao" id="missao">
+
+    <h2 class="titulo">
+      Nossa Missão
+    </h2>
+
+    <div class="missao-box">
+
+      <h3>Construindo o Agro do Futuro</h3>
+
+      <p>
+        Nosso objetivo é desenvolver uma agricultura moderna,
+        eficiente e sustentável, utilizando inovação tecnológica
+        para reduzir impactos ambientais e garantir um futuro
+        mais equilibrado entre produção e natureza.
+      </p>
+
     </div>
 
-</section>
-<section class="timeline">
-   <div class="evento">1950 - Agricultura Tradicional</div>
-   <div class="evento">2000 - Automação</div>
-   <div class="evento">2026 - Agro Inteligente</div>
-</section>
-<form>
-    <input type="text" placeholder="Seu nome">
-    <input type="email" placeholder="Seu email">
-    <textarea placeholder="Mensagem"></textarea>
-    <button>Enviar</button>
-</form>
+  </section>
+
+  <!-- CONTATO -->
+
+  <section class="contato" id="contato">
+
+    <h2 class="titulo">
+      Entre em Contato
+    </h2>
+
+    <p class="subtitulo">
+      Faça parte da transformação sustentável do agronegócio.
+    </p>
+
+    <form>
+
+      <div class="input-group">
+
+        <input type="text" placeholder="Seu nome">
+
+        <input type="email" placeholder="Seu e-mail">
+
+      </div>
+
+      <textarea placeholder="Digite sua mensagem"></textarea>
+
+      <button type="submit">
+        Enviar Mensagem
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 AgroForte • Futuro Sustentável 🌱 <br>
+    Equilíbrio entre produção e meio ambiente.
+
+  </footer>
+
+</body>
+</html>
